@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  server1:
+    build:
+      context: .
+      dockerfile: Dockerfile1
+    image: server1
+    ports:
+      - "8000:8000"
+  server2:
+    image: golang-1.21
+    ports:
+      - "80:8001"
+    volumes:
+      - ./server2/index.html:/app/index.html
+
+      

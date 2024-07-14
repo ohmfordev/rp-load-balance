@@ -1,0 +1,16 @@
+# Dockerfile1
+FROM golang:alpine
+
+WORKDIR /app
+
+COPY server/go.mod ./
+RUN go mod download
+
+COPY server/ .
+
+RUN go build -o main .
+
+COPY server/index.html ./
+
+EXPOSE 8080
+CMD ["./main"]
