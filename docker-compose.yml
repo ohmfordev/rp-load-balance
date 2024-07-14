@@ -47,14 +47,16 @@ services:
       context: .
       dockerfile: Dockerfile4
     ports:
-      - "8000:8080"
+      - "8005:8080"
 
   nginx:
     image: nginx:latest
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/ssl
     depends_on:
       - backend1
       - backend2
